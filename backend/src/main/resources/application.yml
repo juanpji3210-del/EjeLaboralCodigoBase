@@ -1,0 +1,33 @@
+spring:
+  application:
+    name: ejelaboral
+
+  datasource:
+    url: jdbc:mysql://${DB_HOST:localhost}:${DB_PORT:3306}/${DB_NAME:ejelaboral}
+    username: ${DB_USERNAME:root}
+    password: ${DB_PASSWORD:}
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    open-in-view: false
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+
+server:
+  port: 8080
+
+app:
+  jwt:
+    # En producción SIEMPRE por variable de entorno (Constitución IV)
+    secret: ${APP_JWT_SECRET:cambia-esta-clave-en-produccion-debe-tener-al-menos-64-caracteres-para-hs256-seguridad}
+    expiration-ms: ${APP_JWT_EXPIRATION_MS:3600000}
+  cors:
+    allowed-origins: ${APP_CORS_ORIGINS:http://localhost:5173,http://localhost:4173}
+
+logging:
+  level:
+    com.ejelaboral: DEBUG

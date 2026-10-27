@@ -1,0 +1,20 @@
+# Build
+backend/target/
+frontend/dist/
+node_modules/
+
+# IDE
+.idea/
+*.iml
+.vscode/
+*.code-workspace
+
+# Entorno y logs
+.env
+*.log
+
+# Datos de ejecución
+data/
+
+# Credenciales locales
+scripts/

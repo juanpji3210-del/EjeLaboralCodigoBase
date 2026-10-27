@@ -1,0 +1,22 @@
+services:
+  db:
+    image: mysql:8.4
+    container_name: ejelaboral-db
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: ejelaboral
+      MYSQL_USER: ejelaboral
+      MYSQL_PASSWORD: ejelaboral
+    ports:
+      # 3307 para no chocar con un MySQL local (3306)
+      - "3307:3306"
+    volumes:
+      - ejelaboral-mysql:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-proot"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
+volumes:
+  ejelaboral-mysql:

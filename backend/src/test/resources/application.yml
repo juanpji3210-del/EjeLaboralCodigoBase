@@ -1,0 +1,19 @@
+# Configuración de TESTS (AD-3): H2 en memoria, sin depender de MySQL
+spring:
+  datasource:
+    url: jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1
+    driver-class-name: org.h2.Driver
+    username: sa
+    password: ""
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    open-in-view: false
+    show-sql: false
+
+app:
+  jwt:
+    secret: test-secret-para-tests-con-mas-de-treinta-y-dos-bytes-para-hmac
+    expiration-ms: 1800000
+  cors:
+    allowed-origins: http://localhost:5173
